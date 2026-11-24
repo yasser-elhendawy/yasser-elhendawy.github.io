@@ -14,9 +14,11 @@
   body { margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:var(--navy); color:var(--ink); }
   .card { max-width:640px; margin:0 auto; padding:44px 24px 60px; }
   .hero { display:flex; flex-direction:column; align-items:center; text-align:center; gap:5px; padding:4px 0 20px; }
-  .photo { width:140px; height:175px; object-fit:cover; border-radius:18px; margin-bottom:14px; border:2px solid var(--gold); box-shadow:0 10px 26px rgba(0,0,0,.35); }
+  .photo { width:140px; height:175px; object-fit:cover; border-radius:18px; margin-bottom:14px; border:2px solid var(--gold); box-shadow:0 10px 26px rgba(0,0,0,.35), 0 0 64px rgba(201,163,92,.16); }
   .name { font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:31px; letter-spacing:-0.02em; margin:0; }
-  .rule { width:56px; height:2px; background:var(--gold); border-radius:2px; margin:10px 0 4px; }
+  .rule { display:flex; align-items:center; gap:10px; margin:10px 0 6px; }
+  .rule::before, .rule::after { content:""; width:42px; height:2px; background:var(--gold); border-radius:2px; }
+  .rule svg { color:var(--gold); display:block; }
   .role { margin:0; font-weight:700; color:var(--gold); font-size:15px; letter-spacing:.04em; text-transform:uppercase; }
   .sub { margin:0; color:var(--ink2); font-size:14px; }
   .bio { max-width:520px; margin:6px auto 26px; text-align:center; color:var(--ink2); font-size:14.5px; line-height:1.6; }
@@ -38,7 +40,7 @@
     <div class="hero">
       <img class="photo" src="portrait.jpg" alt="Yasser Elhendawy in a dark suit and tie">
       <h1 class="name">Yasser Elhendawy</h1>
-      <div class="rule"></div>
+      <div class="rule"><svg width="30" height="26" viewBox="0 0 64 52" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="5" r="2.2"/><path d="M32 8v34"/><path d="M8 13h48"/><path d="M8 13l-5 13M8 13l5 13"/><path d="M3 26a5 4.2 0 0 0 10 0"/><path d="M56 13l-5 13M56 13l5 13"/><path d="M51 26a5 4.2 0 0 0 10 0"/><path d="M24 46h16"/><path d="M28 42h8"/></svg></div>
       <p class="role">Law Student</p>
       <p class="sub">Faculty of Law, Alexandria University</p>
     </div>
