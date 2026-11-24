@@ -27,11 +27,16 @@
   .plink { display:flex; flex-direction:column; align-items:center; gap:3px; padding:16px 12px; border-radius:14px; text-decoration:none; background:var(--gold); color:var(--navy); transition:filter .15s; }
   .plink:hover { filter:brightness(1.08); }
   .plink-name { font-weight:700; font-size:16px; }
-  .plink-hint { font-size:12.5px; opacity:.75; overflow-wrap:anywhere; }
+  .plink-hint { direction:ltr; unicode-bidi:isolate; font-size:12.5px; opacity:.75; overflow-wrap:anywhere; }
   .links-secondary { display:grid; gap:10px; grid-template-columns:1fr 1fr; max-width:520px; margin:0 auto; }
   .slink { display:flex; align-items:center; justify-content:center; gap:8px; padding:11px 12px; border:1px solid var(--navy2); border-radius:12px; text-decoration:none; color:var(--ink2); background:var(--navy2); font-size:14px; font-weight:600; transition:border-color .15s; }
   .slink:hover { border-color:var(--gold); color:var(--ink); }
   .bio.lead { margin-bottom:12px; }
+  .lang-toggle { position:fixed; top:16px; inset-inline-end:16px; background:transparent; border:1px solid var(--gold); color:var(--gold); border-radius:999px; padding:6px 14px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .lang-toggle:hover { background:rgba(201,163,92,.12); }
+  [dir="rtl"] .bio-list { text-align: right; }
+  [dir="rtl"] .bio-list li { padding-left: 0; padding-right: 20px; }
+  [dir="rtl"] .bio-list li::before { left: auto; right: 2px; }
   .bio-list { max-width:460px; margin:0 auto 26px; padding:0; list-style:none; color:var(--ink2); font-size:14.5px; line-height:1.6; text-align:left; }
   .bio-list li { position:relative; padding-left:20px; margin-bottom:6px; }
   .bio-list li::before { content:""; position:absolute; left:2px; top:.6em; width:7px; height:7px; border-radius:2px; background:var(--gold); transform:rotate(45deg); }
@@ -40,19 +45,20 @@
 </style>
 </head>
 <body>
+  <button id="langbtn" class="lang-toggle" type="button">عربي</button>
   <main class="card">
     <div class="hero">
       <img class="photo" src="portrait.jpg" alt="Yasser Elhendawy in a dark suit and tie">
       <h1 class="name">Yasser Elhendawy</h1>
       <div class="rule"><svg width="30" height="26" viewBox="0 0 64 52" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="5" r="2.2"/><path d="M32 8v34"/><path d="M8 13h48"/><path d="M8 13l-5 13M8 13l5 13"/><path d="M3 26a5 4.2 0 0 0 10 0"/><path d="M56 13l-5 13M56 13l5 13"/><path d="M51 26a5 4.2 0 0 0 10 0"/><path d="M24 46h16"/><path d="M28 42h8"/></svg></div>
-      <p class="role">Final-Year Law Student</p>
-      <p class="sub">Faculty of Law, Alexandria University</p>
+      <p class="role" data-en="Final-Year Law Student" data-ar="طالب حقوق بالفرقة النهائية">Final-Year Law Student</p>
+      <p class="sub" data-en="Faculty of Law, Alexandria University" data-ar="كلية الحقوق، جامعة الإسكندرية">Faculty of Law, Alexandria University</p>
     </div>
-    <p class="bio lead">Member of the <strong>Legal Clinic</strong>. Trained for two years at the law office of Ebrahim Allam:</p>
+    <p class="bio lead" data-en="Member of the <strong>Legal Clinic</strong>. Trained for two years at the law office of Ebrahim Allam:" data-ar="عضو <strong>بالعيادة القانونية</strong>، وتدرّبت لمدة عامين في مكتب المحامي إبراهيم علام، وشمل التدريب:">Member of the <strong>Legal Clinic</strong>. Trained for two years at the law office of Ebrahim Allam:</p>
     <ul class="bio-list">
-      <li>Drafting memoranda and contracts under lawyer supervision</li>
-      <li>Case administration</li>
-      <li>Attendance at court hearings and prosecution investigations</li>
+      <li data-en="Drafting memoranda and contracts under lawyer supervision" data-ar="صياغة المذكرات والعقود تحت إشراف محامٍ.">Drafting memoranda and contracts under lawyer supervision</li>
+      <li data-en="Case administration" data-ar="متابعة الإجراءات الإدارية للقضايا.">Case administration</li>
+      <li data-en="Attendance at court hearings and prosecution investigations" data-ar="حضور جلسات المحاكم وتحقيقات النيابة العامة.">Attendance at court hearings and prosecution investigations</li>
     </ul>
     <nav class="links-primary" aria-label="Primary contact links">
       <a class="plink" href="https://wa.me/201069248745" target="_blank" rel="noopener noreferrer">
@@ -66,8 +72,27 @@
       <a class="slink" href="https://www.facebook.com/share/1CaUwMsr65/" target="_blank" rel="noopener noreferrer">Facebook</a>
       <a class="slink" href="https://www.instagram.com/bessoyasser9" target="_blank" rel="noopener noreferrer">Instagram</a>
     </nav>
-    <p class="closing">Tap a link to get in touch.</p>
+    <p class="closing" data-en="Tap a link to get in touch." data-ar="اضغط على أي رابط للتواصل معي.">Tap a link to get in touch.</p>
   </main>
-  <script data-goatcounter="https://yasser-elhendawy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  
+<script>
+  var btn = document.getElementById('langbtn');
+  function setLang(l){
+    document.documentElement.lang = l;
+    document.documentElement.dir = (l === 'ar') ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-en]').forEach(function(e){ e.innerHTML = e.dataset[l]; });
+    btn.textContent = (l === 'ar') ? 'EN' : 'عربي';
+    try { localStorage.setItem('lang', l); } catch (e) {}
+  }
+  btn.addEventListener('click', function(){
+    setLang(document.documentElement.lang === 'ar' ? 'en' : 'ar');
+  });
+  var initial = 'en';
+  try { initial = localStorage.getItem('lang') || 'en'; } catch (e) {}
+  if (location.hash === '#ar') initial = 'ar';
+  if (location.hash === '#en') initial = 'en';
+  setLang(initial);
+</script>
+<script data-goatcounter="https://yasser-elhendawy.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
