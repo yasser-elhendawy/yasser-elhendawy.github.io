@@ -31,6 +31,10 @@
   .links-secondary { display:grid; gap:10px; grid-template-columns:1fr 1fr; max-width:520px; margin:0 auto; }
   .slink { display:flex; align-items:center; justify-content:center; gap:8px; padding:11px 12px; border:1px solid var(--navy2); border-radius:12px; text-decoration:none; color:var(--ink2); background:var(--navy2); font-size:14px; font-weight:600; transition:border-color .15s; }
   .slink:hover { border-color:var(--gold); color:var(--ink); }
+  .bio.lead { margin-bottom:12px; }
+  .bio-list { max-width:460px; margin:0 auto 26px; padding:0; list-style:none; color:var(--ink2); font-size:14.5px; line-height:1.6; text-align:left; }
+  .bio-list li { position:relative; padding-left:20px; margin-bottom:6px; }
+  .bio-list li::before { content:""; position:absolute; left:2px; top:.6em; width:7px; height:7px; border-radius:2px; background:var(--gold); transform:rotate(45deg); }
   .closing { text-align:center; color:var(--ink2); margin-top:30px; font-size:13.5px; }
   @media (max-width:380px) { .links-primary { grid-template-columns:1fr; } }
 </style>
@@ -41,10 +45,15 @@
       <img class="photo" src="portrait.jpg" alt="Yasser Elhendawy in a dark suit and tie">
       <h1 class="name">Yasser Elhendawy</h1>
       <div class="rule"><svg width="30" height="26" viewBox="0 0 64 52" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="5" r="2.2"/><path d="M32 8v34"/><path d="M8 13h48"/><path d="M8 13l-5 13M8 13l5 13"/><path d="M3 26a5 4.2 0 0 0 10 0"/><path d="M56 13l-5 13M56 13l5 13"/><path d="M51 26a5 4.2 0 0 0 10 0"/><path d="M24 46h16"/><path d="M28 42h8"/></svg></div>
-      <p class="role">Law Student</p>
+      <p class="role">Final-Year Law Student</p>
       <p class="sub">Faculty of Law, Alexandria University</p>
     </div>
-    <p class="bio">Final-year law student and <strong>Legal Clinic member</strong>. Trained for two years at the law office of Ebrahim Allam: drafting memoranda and contracts under lawyer supervision, case administration, and attendance at court hearings and prosecution investigations.</p>
+    <p class="bio lead">Member of the <strong>Legal Clinic</strong>. Trained for two years at the law office of Ebrahim Allam:</p>
+    <ul class="bio-list">
+      <li>Drafting memoranda and contracts under lawyer supervision</li>
+      <li>Case administration</li>
+      <li>Attendance at court hearings and prosecution investigations</li>
+    </ul>
     <nav class="links-primary" aria-label="Primary contact links">
       <a class="plink" href="https://wa.me/201069248745" target="_blank" rel="noopener noreferrer">
         <span class="plink-name">WhatsApp</span><span class="plink-hint">+20 106 924 8745</span>
